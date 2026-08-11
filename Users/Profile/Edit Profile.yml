@@ -1,0 +1,26 @@
+info:
+  name: Edit Profile
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/profile"
+  body:
+    type: multipart-form
+    data:
+      - name: name
+        type: text
+        value: MD OMAR FARUK
+      - name: profile_photo
+        type: file
+        value:
+          - C:\Users\faruk\Downloads\Images\image-52.jpg
+        contentType: image/jpeg
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

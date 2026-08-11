@@ -1,0 +1,72 @@
+opencollection: 1.0.0
+
+info:
+  name: faruk-laravel-starter
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ""
+      port: ""
+      auth:
+        username: ""
+        password: ""
+      bypassProxy: ""
+
+request:
+  auth:
+    type: bearer
+    token: ""
+  variables:
+    - name: base_url
+      value: http://localhost:8200/api
+    - name: user_token
+      value: 2|qV0Xg99WK8578NIH7X8qx6onZGdNKawYRJwpt3Qe93e0eb88
+    - name: admin_token
+      value: ""
+  scripts:
+    - type: after-response
+      code: |-
+        /**
+         * JSON Playground - Bruno Live Sync Script
+         * User: omarfaruksparktech@gmail.com
+         * Sync Key: sync_u_79bc85d9
+         * Note: Paste this script into Bruno "Post Response" script tab!
+         */
+        const axios = require("axios");
+
+        async function syncToPlayground() {
+            try {
+                const responseData = res.getBody ? res.getBody() : res.body;
+                const reqMethod = typeof req.getMethod === 'function' ? req.getMethod() : req.method;
+                const reqUrl = typeof req.getUrl === 'function' ? req.getUrl() : req.url;
+                const reqName = reqUrl || 'Bruno Request';
+
+                // Target domain (Production active / Localhost commented):
+                // const baseUrl = "http://localhost:3000";
+                const targetUrl = "https://jsonplayground.tanvirislam.dev";
+                const syncUrl = targetUrl + '/api/sync?key=sync_u_79bc85d9';
+
+                await axios.post(syncUrl, responseData, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-sync-key': 'sync_u_79bc85d9',
+                        'x-request-name': reqName,
+                        'x-http-method': reqMethod
+                    }
+                });
+
+                console.log("✅ JSON Synced to Playground");
+            } catch(err) {
+                console.error("❌ Sync Error:", err.message);
+            }
+        }
+
+        syncToPlayground();
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git

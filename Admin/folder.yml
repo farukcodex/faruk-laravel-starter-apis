@@ -1,0 +1,9 @@
+info:
+  name: Admin
+  type: folder
+  seq: 2
+
+request:
+  auth:
+    type: bearer
+    token: 4|hBJlCto92vNLoVHJLXv1pdOU2g68E43mZFtTVFTy4e192f54
