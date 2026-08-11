@@ -1,0 +1,29 @@
+info:
+  name: Register
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/auth/register"
+  headers:
+    - name: Accept
+      value: application/json
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Md Omar",
+        "email": "brian.hayes3@yopmail.com",
+        "phone": "01750089881",
+        "password": "12348765",
+        "password_confirmation": "12348765"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

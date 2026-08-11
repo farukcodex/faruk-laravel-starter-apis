@@ -1,0 +1,21 @@
+info:
+  name: Resent Email OTP
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/auth/email/resend"
+  body:
+    type: json
+    data: |-
+      {
+        "email": "brian.hayes3@yopmail.com"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

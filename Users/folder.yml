@@ -1,0 +1,9 @@
+info:
+  name: Users
+  type: folder
+  seq: 1
+
+request:
+  auth:
+    type: bearer
+    token: 3|h8Uykk5FdEgUMMYtyPmHACc5L4hNlRN2qLUp8Peuc1240f38
